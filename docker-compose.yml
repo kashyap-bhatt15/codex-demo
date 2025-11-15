@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      SECRET_KEY: change-me
+      FLASK_ENV: production
+      DATABASE_URL: sqlite:////app/instance/financialhub.sqlite
+    volumes:
+      - instance-data:/app/instance
+    restart: unless-stopped
+volumes:
+  instance-data:
